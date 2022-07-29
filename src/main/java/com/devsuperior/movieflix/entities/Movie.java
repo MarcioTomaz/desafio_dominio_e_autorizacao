@@ -2,9 +2,8 @@ package com.devsuperior.movieflix.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +19,7 @@ public class Movie implements Serializable {
     private String title;
     private String subTitle;
     private Integer year;
-    private String ImgUri;
+    private String ImgUrl;
     private String synopsis;
 
     @ManyToOne
@@ -37,7 +36,7 @@ public class Movie implements Serializable {
         this.title = title;
         this.subTitle = subTitle;
         this.year = year;
-        this.ImgUri = imgUri;
+        this.ImgUrl = imgUri;
         this.synopsis = synopsis;
         this.genre = genre;
     }
@@ -75,12 +74,21 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
-    public String getImgUri() {
-        return ImgUri;
+    public String getImgUrl() {
+        return ImgUrl;
     }
 
-    public void setImgUri(String imgUri) {
-        ImgUri = imgUri;
+    public void setImgUrl(String imgUrl) {
+        ImgUrl = imgUrl;
+    }
+
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public String getSynopsis() {
@@ -113,4 +121,5 @@ public class Movie implements Serializable {
     public int hashCode() {
         return id.hashCode();
     }
-}
+
+  }
